@@ -9,3 +9,10 @@ ui <- bootstrapPage(
   numericInput('count', "Number of obs", count),
   plotOutput("plot")
 )
+
+# server
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    boxplot(runif(input$count), col = "red")
+  })
+}
