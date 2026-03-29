@@ -16,3 +16,6 @@ server <- function(input, output) {
     boxplot(runif(input$count), col = "red")
   })
 }
+
+# launch app
+shinyApp(ui, server)
