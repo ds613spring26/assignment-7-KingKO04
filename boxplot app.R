@@ -17,14 +17,13 @@ ui <- bootstrapPage(
 )
 
 # server
-server <- function(input, output) {
+server <- function(input, output)
   output$plot <- renderPlot(
     ifelse(
       input$plot_type == "hist",
       hist(runif(input$count), col = input$color), 
       boxplot(runif(input$count), col = input$color))
   )
-}
 
 # launch app
 shinyApp(ui, server)
