@@ -11,11 +11,8 @@ ui <- bootstrapPage(
 )
 
 # server
-server <- function(input, output) {
-  output$plot <- renderPlot({
-    boxplot(runif(input$count), col = "red")
-  })
-}
+server <- function(input, output)
+  output$plot <- renderPlot(boxplot(runif(input$count), col = "red"))
 
 # launch app
 shinyApp(ui, server)
