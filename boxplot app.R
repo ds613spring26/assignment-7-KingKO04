@@ -11,6 +11,7 @@ ui <- bootstrapPage(
     "Plot Type", 
     c("Histogram" = "hist", "Boxplot" = "boxplot")
   ),
+  selectInput("color", "Color", unique(c("black", colors()))),
   numericInput('count', "Number of obs", count),
   plotOutput("plot")
 )
@@ -20,8 +21,8 @@ server <- function(input, output) {
   output$plot <- renderPlot(
     ifelse(
       input$plot_type == "hist",
-      hist(runif(input$count), col = "red"), 
-      boxplot(runif(input$count), col = "red"))
+      hist(runif(input$count), col = input$color), 
+      boxplot(runif(input$count), col = input$color))
   )
 }
 
